@@ -5,53 +5,82 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <style>
     body {
-      margin: 20px;
+      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
+      color: #333;
     }
     .container {
       max-width: 600px;
+      margin-top: 50px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #007bff;
+      margin-bottom: 30px;
     }
     .btn {
       margin-top: 10px;
+      font-size: 1.2rem;
     }
     .alert {
       display: none;
+      margin-top: 20px;
+    }
+    .form-group label {
+      font-size: 1.1rem;
+    }
+    .form-control {
+      font-size: 1.1rem;
+      padding: 10px;
+    }
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      color: #777;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1 class="text-center">Social Media Data Fetcher</h1>
-    <p class="text-center">Authorize with the following services and enter a keyword to fetch data:</p>
+    <p class="text-center">Log in with the following services and enter a keyword to fetch data:</p>
     
     <div class="form-group">
       <label for="keyword">Keyword:</label>
       <input type="text" class="form-control" id="keyword" placeholder="Enter keyword">
     </div>
 
-    <button class="btn btn-primary btn-block" onclick="authorizeTwitter()">Authorize Twitter</button>
-    <button class="btn btn-primary btn-block" onclick="authorizeFacebook()">Authorize Facebook</button>
+    <button class="btn btn-primary btn-block" onclick="loginTwitter()">Log in with Twitter</button>
+    <button class="btn btn-primary btn-block" onclick="loginFacebook()">Log in with Facebook</button>
     <button class="btn btn-success btn-block" onclick="fetchData()">Fetch Data</button>
 
     <div class="alert alert-success" id="success-message">
       Data fetched successfully!
     </div>
     <div class="alert alert-danger" id="error-message">
-      Authorization required for one or more services.
+      Login required for one or more services.
     </div>
+
+    <footer>
+      <p>Created with ❤️ by [Your Name]</p>
+    </footer>
   </div>
 
   <script>
-    function authorizeTwitter() {
+    function loginTwitter() {
+      console.log('Logging in with Twitter');
       google.script.run.authorizeService('Twitter');
     }
 
-    function authorizeFacebook() {
+    function loginFacebook() {
+      console.log('Logging in with Facebook');
       google.script.run.authorizeService('Facebook');
     }
 
     function fetchData() {
       var keyword = document.getElementById('keyword').value;
       if (keyword) {
+        console.log('Fetching data for keyword:', keyword);
         google.script.run.withSuccessHandler(onSuccess).withFailureHandler(onFailure).fetchSocialMediaData(keyword);
       } else {
         alert('Please enter a keyword.');
