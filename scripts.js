@@ -1,15 +1,13 @@
-function loginTwitter() {
-  console.log('Logging in with Twitter');
-  google.script.run.authorizeService('Twitter');
+async function startListening() {
+  const keywords = document.getElementById("keywords").value;
+  const platforms = Array.from(document.querySelectorAll('input[name="platform"]:checked')).map(el => el.value);
+  const response = await fetch('https://listensocial.github.io.index.html', { // Replace with your actual URL
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ keywords, platforms }),
+  });
+  const data = await response.json();
+  // Update UI with the received data
 }
-
-function loginFacebook() {
-  console.log('Logging in with Facebook');
-  google.script.run.authorizeService('Facebook');
-}
-
-function fetchData() {
-  var keyword = document.getElementById('keyword').value;
-  if (keyword) {
-    console.log('Fetching data for keyword:', keyword);
-    google.script.run.withSuccess
