@@ -3,42 +3,7 @@
 <head>
   <base target="_top">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <style>
-    body {
-      background-color: #f8f9fa;
-      font-family: 'Arial', sans-serif;
-      color: #333;
-    }
-    .container {
-      max-width: 600px;
-      margin-top: 50px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      color: #007bff;
-      margin-bottom: 30px;
-    }
-    .btn {
-      margin-top: 10px;
-      font-size: 1.2rem;
-    }
-    .alert {
-      display: none;
-      margin-top: 20px;
-    }
-    .form-group label {
-      font-size: 1.1rem;
-    }
-    .form-control {
-      font-size: 1.1rem;
-      padding: 10px;
-    }
-    footer {
-      margin-top: 50px;
-      text-align: center;
-      color: #777;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
@@ -66,36 +31,6 @@
     </footer>
   </div>
 
-  <script>
-    function loginTwitter() {
-      console.log('Logging in with Twitter');
-      google.script.run.authorizeService('Twitter');
-    }
-
-    function loginFacebook() {
-      console.log('Logging in with Facebook');
-      google.script.run.authorizeService('Facebook');
-    }
-
-    function fetchData() {
-      var keyword = document.getElementById('keyword').value;
-      if (keyword) {
-        console.log('Fetching data for keyword:', keyword);
-        google.script.run.withSuccessHandler(onSuccess).withFailureHandler(onFailure).fetchSocialMediaData(keyword);
-      } else {
-        alert('Please enter a keyword.');
-      }
-    }
-
-    function onSuccess() {
-      document.getElementById('success-message').style.display = 'block';
-      document.getElementById('error-message').style.display = 'none';
-    }
-
-    function onFailure() {
-      document.getElementById('success-message').style.display = 'none';
-      document.getElementById('error-message').style.display = 'block';
-    }
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
