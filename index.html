@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+</head>
+<body>
+  <h1>Social Media Data Fetcher</h1>
+  <p>Authorize with the following services:</p>
+  <button onclick="authorizeTwitter()">Authorize Twitter</button>
+  <button onclick="authorizeFacebook()">Authorize Facebook</button>
+  <p>Once authorized, the script will fetch data from Twitter and Facebook and store it in the Google Sheet.</p>
+
+  <script>
+    function authorizeTwitter() {
+      google.script.run.authorizeService('Twitter');
+    }
+
+    function authorizeFacebook() {
+      google.script.run.authorizeService('Facebook');
+    }
+  </script>
+</body>
+</html>
